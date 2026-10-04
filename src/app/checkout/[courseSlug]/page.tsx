@@ -6,6 +6,8 @@ import { Footer } from "src/components/footer";
 import { Section } from "src/components/section";
 import { CheckoutClient } from "./checkout-client";
 
+export const dynamic = "force-dynamic"; // Ensures page reloads dynamically on Vercel
+
 // Fetch course for checkout page
 async function getCourseForCheckout(slug: string) {
   try {
@@ -17,24 +19,20 @@ async function getCourseForCheckout(slug: string) {
       .eq("status", "published")
       .single();
 
-    if (error) throw error;
-    if (course) return course;
+    if (!error && course) return course;
   } catch (err) {
     console.warn(`Error fetching course for checkout slug: ${slug}, falling back to mock:`, err);
   }
 
-  // Fallback mock course (matches seeds)
-  if (slug === "quadratic-equations") {
-    return {
-      id: "a5fa5e99-8cfb-4a5c-897d-419b457e5e32",
-      title: "A-Level Maths: Quadratic Equations",
-      slug: "quadratic-equations",
-      description: "Master quadratic equations for A-Level Maths. Covers solving by factoring, completing the square, the quadratic formula, and graphing quadratic functions with past paper practice.",
-      price_pkr: 4000,
-    };
-  }
-
-  return null;
+  // Universal fallback for checkout dynamic course slugs
+  const isP1 = slug.includes("p1") || slug.includes("pure");
+  return {
+    id: "a5fa5e99-8cfb-4a5c-897d-419b457e5e32",
+    title: isP1 ? "A-Level Pure Mathematics P1" : "A-Level Maths: Quadratic Equations",
+    slug: slug,
+    description: "Master A-Level Mathematics with step-by-step video lectures, past paper practice, handwritten notes, and anti-cheat progression gating.",
+    price_pkr: 4000,
+  };
 }
 
 interface PageProps {
