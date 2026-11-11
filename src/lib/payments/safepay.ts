@@ -6,57 +6,87 @@ const secret = process.env.SAFEPAY_SECRET || "";
 const webhookSecret = process.env.SAFEPAY_WEBHOOK_SECRET || "";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-export const isMockPayment = !apiKey || apiKey === "mock";
+/**
+ * Mock mode is only allowed outside production. In production a missing key is a
+ * configuration error, otherwise anyone could "pay" through the mock page for free.
+ */
+export const isMockPayment =
+  apiKey === "mock" || (!apiKey && process.env.NODE_ENV !== "production");
+
+/**
+ * Safepay environment. Set SAFEPAY_ENVIRONMENT=production only when using live keys;
+ * defaults to sandbox so test keys work on a production Vercel deploy.
+ */
+const safepayEnvironment: "sandbox" | "production" =
+  process.env.SAFEPAY_ENVIRONMENT === "production" ? "production" : "sandbox";
+
+function getSafepayClient() {
+  if (!apiKey || !secret) {
+    throw new Error("Online payments are not configured. Please use EasyPaisa / JazzCash or contact support.");
+  }
+  return new Safepay({
+    environment: safepayEnvironment as any,
+    apiKey,
+    v1Secret: secret,
+    webhookSecret,
+  });
+}
 
 interface CheckoutParams {
   amount: number;
   reference: string;
   courseSlug: string;
+  /** Called with the Safepay tracker token so the caller can store it against the payment */
+  onTracker?: (tracker: string) => Promise<void>;
 }
 
 /**
  * Generates the redirect URL for Safepay Sandbox or production checkout.
  * Falls back to our local mock checkout route if no API key is defined.
  */
-export async function generateCheckoutUrl({ amount, reference, courseSlug }: CheckoutParams): Promise<string> {
+export async function generateCheckoutUrl({ amount, reference, courseSlug, onTracker }: CheckoutParams): Promise<string> {
   if (isMockPayment) {
-    // Redirect to local mock checkout
     return `/checkout/mock-safepay?reference=${reference}&amount=${amount}&courseSlug=${courseSlug}`;
   }
 
-  const isProduction = process.env.NODE_ENV === "production";
-  const safepay = new Safepay({
-    environment: (isProduction ? "production" : "sandbox") as any,
-    apiKey: apiKey,
-    v1Secret: secret,
-    webhookSecret: webhookSecret,
-  });
+  const safepay = getSafepayClient();
 
   try {
-    // Initialize session/tracker using SDK
     const session = await safepay.payments.create({
-      amount: amount,
+      amount,
       currency: "PKR",
     });
 
-    const redirectUrl = `${siteUrl}/portal?payment_status=success&ref=${reference}`;
+    if (onTracker) await onTracker(session.token);
+
+    // Safepay appends tracker/reference/sig to these URLs when it sends the student back
+    const redirectUrl = `${siteUrl}/api/payments/safepay/return?ref=${encodeURIComponent(reference)}&course=${encodeURIComponent(courseSlug)}`;
     const cancelUrl = `${siteUrl}/checkout/${courseSlug}?payment_status=cancelled`;
 
-    // Construct the checkout URL via SDK using the session token (beacon)
-    const checkoutUrl = safepay.checkout.create({
+    return safepay.checkout.create({
       token: session.token,
       orderId: reference,
-      cancelUrl: cancelUrl,
-      redirectUrl: redirectUrl,
+      cancelUrl,
+      redirectUrl,
       source: "custom",
       webhooks: true,
     });
-
-    return checkoutUrl;
   } catch (err) {
     console.error("Safepay SDK error generating checkout URL:", err);
-    throw err;
+    throw new Error("Could not start the Safepay checkout. Please try again or use a manual transfer.");
   }
+}
+
+/**
+ * Verifies the signature Safepay attaches when redirecting the student back:
+ * sig = HMAC-SHA256(tracker, v1Secret)
+ */
+export function verifyReturnSignature(tracker: string, sig: string): boolean {
+  if (!tracker || !sig || !secret) return false;
+  const expected = crypto.createHmac("sha256", secret).update(tracker).digest("hex");
+  const a = Buffer.from(expected);
+  const b = Buffer.from(sig);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
 /**

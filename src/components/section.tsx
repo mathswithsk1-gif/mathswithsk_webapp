@@ -15,8 +15,8 @@ export function Section({ id, className, children, bg = "white" }: SectionProps)
     gradient: "bg-gradient-to-b from-indigo-50/40 via-white to-white text-slate-900 dark:from-indigo-950/10 dark:via-slate-950 dark:to-slate-950 dark:text-slate-50",
     dark: "bg-slate-900 text-slate-50 dark:bg-slate-950 dark:text-slate-100 border-y border-slate-800 dark:border-slate-900",
     glass: "bg-white/50 backdrop-blur-md border border-slate-200/50 dark:bg-slate-950/30 dark:border-slate-800/50",
-    darkSlate: "bg-[#0f172b] text-white border-y border-slate-800",
-    alwaysWhite: "bg-white text-[#0f172b] dark:bg-white dark:text-[#0f172b]",
+    darkSlate: "bg-[#13241D] text-white border-y border-slate-800",
+    alwaysWhite: "bg-white text-[#13241D] dark:bg-white dark:text-[#13241D]",
   };
 
   return (

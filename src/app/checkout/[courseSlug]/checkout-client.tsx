@@ -47,6 +47,16 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
   const [checkoutError, setCheckoutError] = useState("");
   const [paymentMethod, setPaymentMethod] = useState<"safepay" | "easypaisa" | "jazzcash">("safepay");
   const [manualSuccessRef, setManualSuccessRef] = useState<string | null>(null);
+
+  // Show a notice when the student comes back from Safepay without paying
+  useEffect(() => {
+    const status = new URLSearchParams(window.location.search).get("payment_status");
+    if (status === "cancelled") {
+      setCheckoutError("Payment was cancelled. You have not been charged. You can try again or use a manual transfer.");
+    } else if (status === "failed") {
+      setCheckoutError("We could not confirm your payment. If money was deducted, contact us on WhatsApp with your reference and we will activate access.");
+    }
+  }, []);
   
   // Receipt screenshot state
   const [receiptUrl, setReceiptUrl] = useState<string>("");
@@ -174,8 +184,12 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
     if (!res.success) {
       setCheckoutError(res.error || "Failed to create checkout session.");
     } else if (res.redirectUrl) {
-      // Redirect to Safepay sandbox or local mock pay page
-      router.push(res.redirectUrl);
+      // External Safepay URLs need a full-page navigation; internal ones use the router
+      if (/^https?:\/\//.test(res.redirectUrl)) {
+        window.location.assign(res.redirectUrl);
+      } else {
+        router.push(res.redirectUrl);
+      }
     }
   };
 
@@ -222,7 +236,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                   setAuthError("");
                 }}
                 className={`text-sm font-bold pb-1.5 border-b-2 transition-all ${
-                  authView === "register" ? "border-primary text-primary" : "border-transparent text-slate-400 hover:text-slate-600"
+                  authView === "register" ? "border-primary text-brand" : "border-transparent text-slate-400 hover:text-slate-600"
                 }`}
               >
                 Create Account
@@ -233,7 +247,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                   setAuthError("");
                 }}
                 className={`text-sm font-bold pb-1.5 border-b-2 transition-all ${
-                  authView === "login" ? "border-primary text-primary" : "border-transparent text-slate-400 hover:text-slate-600"
+                  authView === "login" ? "border-primary text-brand" : "border-transparent text-slate-400 hover:text-slate-600"
                 }`}
               >
                 Sign In
@@ -274,7 +288,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                         <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                           !isAdmin ? "border-primary bg-primary" : "border-slate-300 dark:border-slate-700"
                         }`}>
-                          {!isAdmin && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                          {!isAdmin && <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />}
                         </div>
                       </div>
                       <span className="text-[10px] text-slate-500 dark:text-white/80 leading-tight">
@@ -296,7 +310,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                         <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                           isAdmin ? "border-primary bg-primary" : "border-slate-300 dark:border-slate-700"
                         }`}>
-                          {isAdmin && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                          {isAdmin && <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />}
                         </div>
                       </div>
                       <span className="text-[10px] text-slate-500 dark:text-white/80 leading-tight">
@@ -379,7 +393,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
               {/* ADMIN REGISTRATION TOGGLE */}
               {authView === "register" && isAdmin && (
                 <div className="mt-4 p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 space-y-4 animate-fade-in">
-                  <span className="block text-xs font-bold text-primary flex items-center gap-1.5 uppercase">
+                  <span className="block text-xs font-bold text-brand flex items-center gap-1.5 uppercase">
                     <Sparkles className="w-4 h-4" />
                     <span>Admin Verification Required</span>
                   </span>
@@ -474,7 +488,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                       setAuthView(authView === "register" ? "login" : "register");
                       setAuthError("");
                     }}
-                    className="text-primary hover:underline font-bold text-xs cursor-pointer"
+                    className="text-brand hover:underline font-bold text-xs cursor-pointer"
                   >
                     {authView === "register" ? "Sign in" : "Sign up"}
                   </button>
@@ -488,7 +502,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                     setAuthView("admin-login");
                     setAuthError("");
                   }}
-                  className="text-xs text-slate-500 hover:text-primary transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
+                  className="text-xs text-slate-500 hover:text-brand transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
                 >
                   <Shield className="w-3.5 h-3.5" />
                   <span>Admin Login with Security Credentials</span>
@@ -500,7 +514,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                     setAuthView("login");
                     setAuthError("");
                   }}
-                  className="text-xs text-slate-500 hover:text-primary transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
+                  className="text-xs text-slate-500 hover:text-brand transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
                 >
                   <span>Back to Student Login</span>
                 </button>
@@ -512,7 +526,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
           <div className="space-y-8">
             <div className="bg-slate-50 dark:bg-slate-950 border border-slate-200/50 dark:border-slate-800/60 p-4 rounded-2xl flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+                <div className="w-10 h-10 rounded-full bg-primary/10 text-brand flex items-center justify-center font-bold text-sm">
                   {user.email.slice(0, 2).toUpperCase()}
                 </div>
                 <div>
@@ -534,7 +548,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                 <div className="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <ShieldCheck className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-black text-[#0f172b] dark:text-white">
+                <h3 className="text-xl font-black text-[#13241D] dark:text-white">
                   Payment Request Submitted!
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-md mx-auto">
@@ -549,7 +563,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                   </div>
                   <div className="flex justify-between text-xs text-slate-500">
                     <span>Reference ID:</span>
-                    <span className="font-mono font-bold text-primary">{manualSuccessRef}</span>
+                    <span className="font-mono font-bold text-brand">{manualSuccessRef}</span>
                   </div>
                   <div className="flex justify-between text-xs text-slate-500">
                     <span>Account Title:</span>
@@ -574,7 +588,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                   </a>
                   <button
                     onClick={() => router.push("/portal")}
-                    className="border border-[#0f172b] text-[#0f172b] dark:border-white dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 font-black text-xs tracking-wider uppercase px-6 py-3.5 rounded-full transition-all text-center cursor-pointer"
+                    className="border border-[#13241D] text-[#13241D] dark:border-white dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 font-black text-xs tracking-wider uppercase px-6 py-3.5 rounded-full transition-all text-center cursor-pointer"
                   >
                     <span>Go to Portal</span>
                   </button>
@@ -601,15 +615,15 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                         }`}
                       >
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-slate-900 dark:text-white">Safepay</span>
+                          <span className="text-xs font-bold text-slate-900 dark:text-white">Pay Online</span>
                           <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                             paymentMethod === "safepay" ? "border-primary bg-primary" : "border-slate-300 dark:border-slate-700"
                           }`}>
-                            {paymentMethod === "safepay" && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                            {paymentMethod === "safepay" && <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />}
                           </div>
                         </div>
                         <span className="text-[10px] text-slate-450 leading-tight">
-                          Instant activation. Visa / Mastercard / Wallets.
+                          Safepay · Card / wallet. Instant access.
                         </span>
                       </div>
 
@@ -623,11 +637,11 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                         }`}
                       >
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-slate-900 dark:text-white">EasyPaisa</span>
+                          <span className="text-xs font-bold text-slate-900 dark:text-white">EasyPaisa (Manual)</span>
                           <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                             paymentMethod === "easypaisa" ? "border-primary bg-primary" : "border-slate-300 dark:border-slate-700"
                           }`}>
-                            {paymentMethod === "easypaisa" && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                            {paymentMethod === "easypaisa" && <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />}
                           </div>
                         </div>
                         <span className="text-[10px] text-slate-450 leading-tight">
@@ -645,11 +659,11 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                         }`}
                       >
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-slate-900 dark:text-white">JazzCash</span>
+                          <span className="text-xs font-bold text-slate-900 dark:text-white">JazzCash (Manual)</span>
                           <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                             paymentMethod === "jazzcash" ? "border-primary bg-primary" : "border-slate-300 dark:border-slate-700"
                           }`}>
-                            {paymentMethod === "jazzcash" && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                            {paymentMethod === "jazzcash" && <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />}
                           </div>
                         </div>
                         <span className="text-[10px] text-slate-450 leading-tight">
@@ -662,15 +676,15 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
 
                 {/* Manual details instructions box if paymentMethod is 'easypaisa' or 'jazzcash' */}
                 {finalPrice > 0 && paymentMethod !== "safepay" && (
-                  <div className="p-5 rounded-2xl bg-[#0f172b]/5 dark:bg-slate-900/60 border border-[#0f172b]/15 dark:border-slate-800 space-y-4 animate-fade-in text-slate-700 dark:text-slate-350 text-xs">
-                    <h4 className="font-extrabold text-[#0f172b] dark:text-white uppercase tracking-wider text-[11px]">
+                  <div className="p-5 rounded-2xl bg-[#13241D]/5 dark:bg-slate-900/60 border border-[#13241D]/15 dark:border-slate-800 space-y-4 animate-fade-in text-slate-700 dark:text-slate-350 text-xs">
+                    <h4 className="font-extrabold text-[#13241D] dark:text-white uppercase tracking-wider text-[11px]">
                       Transfer Instructions ({paymentMethod === "easypaisa" ? "EasyPaisa" : "JazzCash"})
                     </h4>
                     <div className="space-y-2">
                       <p>
-                        1. Transfer Rs. <strong className="text-primary font-black">{finalPrice.toLocaleString()}</strong> to the following account:
+                        1. Transfer Rs. <strong className="text-brand font-black">{finalPrice.toLocaleString()}</strong> to the following account:
                       </p>
-                      <div className="bg-white dark:bg-slate-950 p-3.5 rounded-xl border border-slate-200/50 dark:border-slate-850 font-medium space-y-1 text-[#0f172b] dark:text-white font-mono text-xs">
+                      <div className="bg-white dark:bg-slate-950 p-3.5 rounded-xl border border-slate-200/50 dark:border-slate-850 font-medium space-y-1 text-[#13241D] dark:text-white font-mono text-xs">
                         <div>Account Title: <strong>Sadiq Khan (SK)</strong></div>
                         <div>Account Number: <strong>{paymentMethod === "easypaisa" ? "0300-1234567" : "0301-7654321"}</strong></div>
                       </div>
@@ -697,7 +711,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
                             </div>
                           ) : (
                             <div className="space-y-1 py-2">
-                              <div className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-1">
+                              <div className="w-9 h-9 rounded-full bg-primary/10 text-brand flex items-center justify-center mx-auto mb-1">
                                 <Sparkles className="w-5 h-5" />
                               </div>
                               <p className="text-xs font-bold text-slate-800 dark:text-slate-200">
@@ -740,14 +754,14 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
 
                   <div className="border-t border-slate-100 dark:border-slate-800 pt-4 flex justify-between items-center text-base">
                     <span className="font-black text-slate-900 dark:text-white">Payable Total</span>
-                    <span className="text-2xl font-black text-primary">Rs. {finalPrice.toLocaleString()}</span>
+                    <span className="text-2xl font-black text-brand">Rs. {finalPrice.toLocaleString()}</span>
                   </div>
                 </div>
 
                 <button
                   onClick={finalPrice === 0 ? handleCheckout : (paymentMethod === "safepay" ? handleCheckout : handleManualCheckout)}
                   disabled={checkoutLoading}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white py-4 rounded-xl font-bold shadow-xl shadow-primary/20 hover:bg-primary/95 transition-all hover:scale-[1.01] disabled:opacity-70 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground py-4 rounded-xl font-bold shadow-xl shadow-primary/20 hover:bg-primary/95 transition-all hover:scale-[1.01] disabled:opacity-70 cursor-pointer"
                 >
                   {checkoutLoading ? (
                     <Loader className="w-5 h-5 animate-spin" />
@@ -793,7 +807,7 @@ export function CheckoutClient({ course }: CheckoutClientProps) {
           </h3>
 
           <div className="flex gap-4">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary shrink-0 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-brand shrink-0 flex items-center justify-center">
               <BookOpen className="w-6 h-6 stroke-[2]" />
             </div>
             <div>

@@ -29,7 +29,7 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
           <div
             key={idx}
             onClick={() => toggleItem(idx)}
-            className="bg-[#0f172a]/60 hover:bg-[#0f172a]/90 dark:bg-slate-900/30 dark:hover:bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 shadow-sm transition-all duration-200 text-white cursor-pointer select-none"
+            className="bg-[#13241D]/60 hover:bg-[#13241D]/90 dark:bg-slate-900/30 dark:hover:bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 shadow-sm transition-all duration-200 text-white cursor-pointer select-none"
           >
             {/* Header / Question row */}
             <div className="flex justify-between items-center gap-4 w-full">

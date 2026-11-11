@@ -1,6 +1,6 @@
 "use server";
 
-import { signMockWebhookPayload } from "src/lib/payments/safepay";
+import { signMockWebhookPayload, isMockPayment } from "src/lib/payments/safepay";
 
 interface SimulationResult {
   success: boolean;
@@ -15,6 +15,10 @@ export async function simulateWebhookPayment(
   reference: string,
   amount: number
 ): Promise<SimulationResult> {
+  if (!isMockPayment) {
+    return { success: false, error: "Mock payments are disabled. Real Safepay is configured." };
+  }
+
   if (!reference || isNaN(amount)) {
     return { success: false, error: "Invalid payment parameters." };
   }

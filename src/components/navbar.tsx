@@ -78,7 +78,7 @@ export function Navbar() {
           {/* Logo Brand */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2.5 font-black text-lg text-slate-900 tracking-tight dark:text-white">
-              <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-extrabold text-xs shadow-sm shadow-primary/45">SK</span>
+              <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-extrabold text-xs shadow-sm shadow-primary/45">SK</span>
               <span>Maths with SK</span>
             </Link>
           </div>
@@ -152,7 +152,7 @@ export function Navbar() {
             {user ? (
               <Link
                 href="/portal"
-                className="bg-primary hover:bg-primary/95 text-white font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-md shadow-primary/20 hover:scale-[1.02] inline-flex items-center gap-1.5"
+                className="bg-primary hover:bg-primary/95 text-primary-foreground font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-md shadow-primary/20 hover:scale-[1.02] inline-flex items-center gap-1.5"
               >
                 <User className="w-3.5 h-3.5" />
                 <span>Student Portal</span>
@@ -167,7 +167,7 @@ export function Navbar() {
                 </Link>
                 <Link
                   href="/#courses"
-                  className="bg-primary hover:bg-primary/95 text-white font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-md shadow-primary/20 hover:scale-[1.02]"
+                  className="bg-primary hover:bg-primary/95 text-primary-foreground font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-md shadow-primary/20 hover:scale-[1.02]"
                 >
                   Join Course
                 </Link>
@@ -193,35 +193,35 @@ export function Navbar() {
           <Link
             href="/#courses"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             Courses
           </Link>
           <Link
             href="/#about"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             About SK
           </Link>
           <Link
             href="/#how-it-works"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             How It Works
           </Link>
           <Link
             href="/#faq"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             FAQ
           </Link>
           <Link
             href="/blog"
             onClick={() => setIsOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
+            className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             Blog
           </Link>
@@ -231,7 +231,7 @@ export function Navbar() {
               <Link
                 href="/portal"
                 onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center gap-2 bg-primary text-white py-2.5 rounded-full text-sm font-semibold shadow-md"
+                className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-2.5 rounded-full text-sm font-semibold shadow-md"
               >
                 <User className="w-4 h-4" />
                 <span>Student Portal</span>
@@ -248,7 +248,7 @@ export function Navbar() {
                 <Link
                   href="/#courses"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center bg-primary text-white py-2.5 rounded-full text-sm font-semibold shadow-md"
+                  className="w-full flex items-center justify-center bg-primary text-primary-foreground py-2.5 rounded-full text-sm font-semibold shadow-md"
                 >
                   Join Now
                 </Link>

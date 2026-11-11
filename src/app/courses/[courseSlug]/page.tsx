@@ -117,7 +117,7 @@ export default async function CoursePage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Title / Info */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-brand text-xs font-bold uppercase tracking-wider">
                 Full Syllabus Course
               </span>
               <h1 className="text-3xl md:text-5xl font-black text-black dark:text-white leading-tight">
@@ -130,15 +130,15 @@ export default async function CoursePage({ params }: PageProps) {
               {/* Course Meta Pills */}
               <div className="flex flex-wrap gap-4 pt-2">
                 <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900/50 px-4 py-2.5 rounded-xl text-sm font-semibold">
-                  <Calendar className="w-4 h-4 text-primary" />
+                  <Calendar className="w-4 h-4 text-brand" />
                   <span>Self-Paced Learning</span>
                 </div>
                 <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900/50 px-4 py-2.5 rounded-xl text-sm font-semibold">
-                  <BookOpen className="w-4 h-4 text-primary" />
+                  <BookOpen className="w-4 h-4 text-brand" />
                   <span>{totalLectures} In-Depth Lectures</span>
                 </div>
                 <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900/50 px-4 py-2.5 rounded-xl text-sm font-semibold">
-                  <Clock className="w-4 h-4 text-primary" />
+                  <Clock className="w-4 h-4 text-brand" />
                   <span>{totalDurationMin} Mins of Video</span>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default async function CoursePage({ params }: PageProps) {
               <div className="space-y-3">
                 <Link
                   href={`/checkout/${course.slug}`}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white py-4 rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-primary/95 transition-all hover:scale-[1.01]"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground py-4 rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-primary/95 transition-all hover:scale-[1.01]"
                 >
                   <span>Enroll in Course</span>
                   <ArrowRight className="w-5 h-5" />

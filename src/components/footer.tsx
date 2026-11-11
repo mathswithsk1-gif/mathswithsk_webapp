@@ -12,7 +12,7 @@ export function Footer() {
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2 font-bold text-xl text-white">
-              <BookOpen className="w-6 h-6 stroke-[2.5] text-primary" />
+              <BookOpen className="w-6 h-6 stroke-[2.5] text-brand" />
               <span>Maths with SK</span>
             </div>
             <p className="text-sm text-slate-400 max-w-sm">

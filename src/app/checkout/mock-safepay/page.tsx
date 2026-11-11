@@ -50,19 +50,19 @@ function MockSafepayContent() {
       {/* Sleek Premium Brand Header */}
       <header className="bg-slate-900/90 dark:bg-slate-950/90 backdrop-blur-md text-white py-4 px-6 border-b border-slate-800 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-2.5">
-          <div className="p-1.5 bg-primary/10 rounded-lg text-primary">
+          <div className="p-1.5 bg-primary/10 rounded-lg text-brand">
             <ShieldCheck className="w-5 h-5 stroke-[2.5]" />
           </div>
           <span className="font-black text-lg tracking-tight text-white flex items-center gap-1.5">
             safepay
-            <span className="bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">
+            <span className="bg-primary/20 text-brand text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">
               Sandbox
             </span>
           </span>
         </div>
         <div className="text-right">
           <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Order Total</span>
-          <span className="font-extrabold text-base text-primary">PKR {amount.toLocaleString()}</span>
+          <span className="font-extrabold text-base text-brand">PKR {amount.toLocaleString()}</span>
         </div>
       </header>
 
@@ -161,7 +161,7 @@ function MockSafepayContent() {
                 whileTap={{ scale: 0.99 }}
                 onClick={handlePaySuccess}
                 disabled={loading}
-                className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/95 text-white py-4 rounded-xl font-bold shadow-lg shadow-primary/10 transition-colors disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/95 text-primary-foreground py-4 rounded-xl font-bold shadow-lg shadow-primary/10 transition-colors disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
               >
                 {loading ? (
                   <Loader className="w-5 h-5 animate-spin" />
@@ -201,7 +201,7 @@ export default function MockSafepayPage() {
     <Suspense fallback={
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center text-slate-500 font-bold transition-colors duration-300">
         <div className="flex flex-col items-center gap-3">
-          <Loader className="w-8 h-8 text-primary animate-spin" />
+          <Loader className="w-8 h-8 text-brand animate-spin" />
           <span className="text-xs uppercase tracking-wider font-extrabold text-slate-400">Loading Sandbox Gateway...</span>
         </div>
       </div>

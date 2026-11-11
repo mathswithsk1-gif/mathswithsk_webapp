@@ -109,7 +109,7 @@ export default async function CoursePortalPage({
             {/* Back to Portal link */}
             <Link
               href="/portal"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-brand transition-colors uppercase"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Portal</span>
@@ -118,7 +118,7 @@ export default async function CoursePortalPage({
             {/* Course Title and overall completion progress */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end border-b border-slate-100 dark:border-slate-800 pb-8">
               <div className="md:col-span-2 space-y-3">
-                <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase">
+                <div className="inline-flex items-center gap-1.5 bg-primary/10 text-brand px-3 py-1 rounded-full text-xs font-bold uppercase">
                   <BookOpen className="w-3.5 h-3.5" />
                   <span>Student Classroom</span>
                 </div>
@@ -134,7 +134,7 @@ export default async function CoursePortalPage({
               <div className="bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800/80 p-5 rounded-2xl space-y-3.5">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-slate-400 font-semibold uppercase">Course Progress</span>
-                  <span className="font-extrabold text-primary">{progressPercent}%</span>
+                  <span className="font-extrabold text-brand">{progressPercent}%</span>
                 </div>
                 <div className="h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
                   <div
@@ -194,9 +194,9 @@ export default async function CoursePortalPage({
                                 {isUnlocked ? (
                                   <Link
                                     href={`/portal/courses/${course.slug}/${lecture.id}`}
-                                    className="font-bold text-slate-800 hover:text-primary transition-colors text-sm dark:text-slate-200 dark:hover:text-primary flex items-center gap-1.5"
+                                    className="font-bold text-slate-800 hover:text-brand transition-colors text-sm dark:text-slate-200 dark:hover:text-brand flex items-center gap-1.5"
                                   >
-                                    <Video className="w-4 h-4 text-primary shrink-0" />
+                                    <Video className="w-4 h-4 text-brand shrink-0" />
                                     <span>{lecture.title}</span>
                                   </Link>
                                 ) : (
@@ -228,7 +228,7 @@ export default async function CoursePortalPage({
                               ) : isUnlocked ? (
                                 <Link
                                   href={`/portal/courses/${course.slug}/${lecture.id}`}
-                                  className="inline-flex items-center gap-1 text-primary bg-primary/10 px-3 py-1.5 rounded-xl hover:bg-primary/20 transition-colors"
+                                  className="inline-flex items-center gap-1 text-brand bg-primary/10 px-3 py-1.5 rounded-xl hover:bg-primary/20 transition-colors"
                                 >
                                   <Play className="w-3.5 h-3.5 fill-current" />
                                   <span>Watch Lecture</span>

@@ -24,10 +24,10 @@ export function SquishyCard({
   // Brand color based on variant
   const bgClass =
     variant === 1
-      ? "bg-primary" // Orange (#f35c2d)
+      ? "bg-ink" // Chalk Ink (#13241D)
       : variant === 2
-      ? "bg-rose-600" // Rose (#e11d48)
-      : "bg-indigo-600"; // Indigo (#4f46e5)
+      ? "bg-pencil" // Pencil (#56705F)
+      : "bg-[#1F3A2E]"; // Deep forest
 
   return (
     <motion.div
@@ -108,7 +108,7 @@ const Background1 = () => {
         cx="160.5"
         cy="114.5"
         r="101.5"
-        fill="#0f172b" // cut out to dark slate background
+        fill="#13241D" // cut out to dark slate background
       />
       <motion.ellipse
         variants={{
@@ -126,7 +126,7 @@ const Background1 = () => {
         cy="265.5"
         rx="101.5"
         ry="43.5"
-        fill="#0f172b"
+        fill="#13241D"
       />
     </motion.svg>
   );
@@ -157,7 +157,7 @@ const Background2 = () => {
         width="153"
         height="153"
         rx="15"
-        fill="#0f172b"
+        fill="#13241D"
         variants={{
           hover: {
             y: 219,
@@ -179,7 +179,7 @@ const Background2 = () => {
         width="153"
         height="153"
         rx="15"
-        fill="#0f172b"
+        fill="#13241D"
         variants={{
           hover: {
             y: 12,
@@ -232,7 +232,7 @@ const Background3 = () => {
           ease: "backInOut",
         }}
         d="M148.893 157.531C154.751 151.673 164.249 151.673 170.107 157.531L267.393 254.818C273.251 260.676 273.251 270.173 267.393 276.031L218.75 324.674C186.027 357.397 132.973 357.397 100.25 324.674L51.6068 276.031C45.7489 270.173 45.7489 260.676 51.6068 254.818L148.893 157.531Z"
-        fill="#0f172b"
+        fill="#13241D"
       />
       <motion.path
         variants={{
@@ -246,7 +246,7 @@ const Background3 = () => {
           ease: "backInOut",
         }}
         d="M148.893 99.069C154.751 93.2111 164.249 93.2111 170.107 99.069L267.393 196.356C273.251 202.213 273.251 211.711 267.393 217.569L218.75 266.212C186.027 298.935 132.973 298.935 100.25 266.212L51.6068 217.569C45.7489 211.711 45.7489 202.213 51.6068 196.356L148.893 99.069Z"
-        fill="#0f172b"
+        fill="#13241D"
       />
       <motion.path
         variants={{
@@ -260,7 +260,7 @@ const Background3 = () => {
           ease: "backInOut",
         }}
         d="M148.893 40.6066C154.751 34.7487 164.249 34.7487 170.107 40.6066L267.393 137.893C273.251 143.751 273.251 153.249 267.393 159.106L218.75 207.75C186.027 240.473 132.973 240.473 100.25 207.75L51.6068 159.106C45.7489 153.249 45.7489 143.751 51.6068 137.893L148.893 40.6066Z"
-        fill="#0f172b"
+        fill="#13241D"
       />
     </motion.svg>
   );

@@ -161,11 +161,29 @@ export async function createPaymentSessionAction(
     }
 
     // 7. Generate checkout URL
-    const redirectUrl = await generateCheckoutUrl({
-      amount: finalAmount,
-      reference: gatewayRef,
-      courseSlug: course.slug,
-    });
+    let redirectUrl: string;
+    try {
+      redirectUrl = await generateCheckoutUrl({
+        amount: finalAmount,
+        reference: gatewayRef,
+        courseSlug: course.slug,
+        // Store the Safepay tracker as the payment reference. Safepay's webhook and
+        // return redirect both identify the payment by tracker, so lookups stay reliable.
+        onTracker: async (tracker) => {
+          const { error } = await adminSupabase
+            .from("payments")
+            .update({ gateway_ref: tracker })
+            .eq("gateway_ref", gatewayRef);
+          if (error) throw error;
+        },
+      });
+    } catch (err: any) {
+      await adminSupabase
+        .from("payments")
+        .update({ status: "failed" })
+        .in("gateway_ref", [gatewayRef]);
+      return { success: false, error: err.message || "Could not start online payment." };
+    }
 
     return {
       success: true,
