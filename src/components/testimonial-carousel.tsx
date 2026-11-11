@@ -88,24 +88,24 @@ export function TestimonialCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="w-full bg-[#0f172b]/5 backdrop-blur-md border border-[#0f172b]/10 shadow-xl shadow-[#0f172b]/5 p-8 rounded-3xl flex flex-col justify-between"
+            className="w-full bg-[#13241D]/5 backdrop-blur-md border border-[#13241D]/10 shadow-xl shadow-[#13241D]/5 p-8 rounded-3xl flex flex-col justify-between"
           >
             <div>
-              <MessageSquare className="w-8 h-8 text-primary/40 mb-4" />
-              <p className="text-sm md:text-base text-[#0f172b] italic leading-relaxed">
+              <MessageSquare className="w-8 h-8 text-brand/40 mb-4" />
+              <p className="text-sm md:text-base text-[#13241D] italic leading-relaxed">
                 "{testimonials[currentIndex].text}"
               </p>
             </div>
             
             <div className="mt-8 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center font-black text-sm text-primary shadow-inner">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center font-black text-sm text-brand shadow-inner">
                 {testimonials[currentIndex].initials}
               </div>
               <div>
-                <span className="block font-black text-[#0f172b] text-sm md:text-base">
+                <span className="block font-black text-[#13241D] text-sm md:text-base">
                   {testimonials[currentIndex].name}
                 </span>
-                <span className="block text-[10px] md:text-xs text-[#0f172b]/70 font-semibold mt-0.5">
+                <span className="block text-[10px] md:text-xs text-[#13241D]/70 font-semibold mt-0.5">
                   {testimonials[currentIndex].role}
                 </span>
               </div>
@@ -122,7 +122,7 @@ export function TestimonialCarousel() {
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? "bg-primary w-6" : "bg-[#0f172b]/20 hover:bg-[#0f172b]/40"
+                idx === currentIndex ? "bg-primary w-6" : "bg-[#13241D]/20 hover:bg-[#13241D]/40"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -132,14 +132,14 @@ export function TestimonialCarousel() {
         <div className="flex gap-3">
           <button
             onClick={handlePrev}
-            className="p-2.5 rounded-full bg-[#0f172b]/5 border border-[#0f172b]/10 text-[#0f172b] hover:bg-[#0f172b]/10 transition-colors cursor-pointer"
+            className="p-2.5 rounded-full bg-[#13241D]/5 border border-[#13241D]/10 text-[#13241D] hover:bg-[#13241D]/10 transition-colors cursor-pointer"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={handleNext}
-            className="p-2.5 rounded-full bg-[#0f172b]/5 border border-[#0f172b]/10 text-[#0f172b] hover:bg-[#0f172b]/10 transition-colors cursor-pointer"
+            className="p-2.5 rounded-full bg-[#13241D]/5 border border-[#13241D]/10 text-[#13241D] hover:bg-[#13241D]/10 transition-colors cursor-pointer"
             aria-label="Next slide"
           >
             <ChevronRight className="w-5 h-5" />

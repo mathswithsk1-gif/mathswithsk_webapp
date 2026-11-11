@@ -134,7 +134,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
         <div className="max-w-md mx-auto bg-slate-50/70 dark:bg-slate-900 border border-slate-200/40 dark:border-slate-800/80 rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
           <div className="text-center space-y-2">
             <Link href="/" className="inline-flex items-center gap-2.5 font-black text-2xl text-slate-900 justify-center dark:text-white">
-              <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-extrabold text-sm shadow-sm shadow-primary/45">SK</span>
+              <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-extrabold text-sm shadow-sm shadow-primary/45">SK</span>
               <span>Maths with SK</span>
             </Link>
             <h2 className="text-lg font-black text-black dark:text-white pt-2">
@@ -160,7 +160,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                 setAuthError("");
               }}
               className={`text-sm font-bold pb-1.5 border-b-2 transition-all ${
-                authView === "login" ? "border-primary text-primary" : "border-transparent text-slate-400 hover:text-slate-600"
+                authView === "login" ? "border-primary text-brand" : "border-transparent text-slate-400 hover:text-slate-600"
               }`}
             >
               Sign In
@@ -171,7 +171,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                 setAuthError("");
               }}
               className={`text-sm font-bold pb-1.5 border-b-2 transition-all ${
-                authView === "register" ? "border-primary text-primary" : "border-transparent text-slate-400 hover:text-slate-600"
+                authView === "register" ? "border-primary text-brand" : "border-transparent text-slate-400 hover:text-slate-600"
               }`}
             >
               Register Account
@@ -317,7 +317,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
             {/* Custom Admin Registration parameters */}
             {authView === "register" && isAdmin && (
               <div className="mt-4 p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 space-y-4">
-                <span className="block text-xs font-bold text-primary flex items-center gap-1.5 uppercase">
+                <span className="block text-xs font-bold text-brand flex items-center gap-1.5 uppercase">
                   <Sparkles className="w-4 h-4" />
                   <span>Admin Verification</span>
                 </span>
@@ -412,7 +412,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                     setAuthView(authView === "register" ? "login" : "register");
                     setAuthError("");
                   }}
-                  className="text-primary hover:underline font-bold text-xs cursor-pointer"
+                  className="text-brand hover:underline font-bold text-xs cursor-pointer"
                 >
                   {authView === "register" ? "Sign in" : "Sign up"}
                 </button>
@@ -426,7 +426,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                   setAuthView("admin-login");
                   setAuthError("");
                 }}
-                className="text-xs text-slate-500 hover:text-primary transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
+                className="text-xs text-slate-500 hover:text-brand transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
               >
                 <Shield className="w-3.5 h-3.5" />
                 <span>Admin Login with Security Credentials</span>
@@ -438,7 +438,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                   setAuthView("login");
                   setAuthError("");
                 }}
-                className="text-xs text-slate-500 hover:text-primary transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
+                className="text-xs text-slate-500 hover:text-brand transition-colors flex items-center justify-center gap-1 font-bold cursor-pointer"
               >
                 <span>Back to Student Login</span>
               </button>
@@ -470,7 +470,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
           {/* Student Profile Card */}
           <div className="bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80 rounded-3xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
             <div className="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
-              <div className="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black text-lg">
+              <div className="w-14 h-14 rounded-full bg-primary/10 text-brand flex items-center justify-center font-black text-lg">
                 <GraduationCap className="w-7 h-7" />
               </div>
               <div>
@@ -509,7 +509,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                 </div>
                 <Link
                   href="/#courses"
-                  className="inline-flex items-center gap-1.5 bg-primary text-white text-xs font-bold px-5 py-3 rounded-xl shadow-md"
+                  className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-bold px-5 py-3 rounded-xl shadow-md"
                 >
                   <span>Explore Courses</span>
                   <ArrowRight className="w-4 h-4" />
@@ -524,7 +524,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                   >
                     <div className="space-y-4">
                       <div className="flex justify-between items-start">
-                        <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-primary/10 text-brand flex items-center justify-center">
                           <BookOpen className="w-5 h-5" />
                         </div>
                         <span className="text-[10px] bg-slate-100 dark:bg-slate-800 font-bold px-2 py-0.5 rounded text-slate-600 dark:text-slate-400">
@@ -546,7 +546,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                     <div className="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
                       <div className="flex justify-between items-center text-xs">
                         <span className="text-slate-400 font-medium">Course Completed</span>
-                        <span className="font-bold text-primary">{progressPercent}%</span>
+                        <span className="font-bold text-brand">{progressPercent}%</span>
                       </div>
                       <div className="h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                         <div
@@ -556,7 +556,7 @@ export function PortalClient({ initialEnrollments, userProfile }: PortalClientPr
                       </div>
                       <Link
                         href={`/portal/courses/${course.slug}`}
-                        className="w-full inline-flex items-center justify-center gap-1.5 bg-primary/90 hover:bg-primary text-white py-3 rounded-xl text-xs font-bold transition-all mt-2"
+                        className="w-full inline-flex items-center justify-center gap-1.5 bg-primary/90 hover:bg-primary text-primary-foreground py-3 rounded-xl text-xs font-bold transition-all mt-2"
                       >
                         <span>Start Learning</span>
                         <ArrowRight className="w-3.5 h-3.5" />

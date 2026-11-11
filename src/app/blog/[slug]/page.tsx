@@ -105,7 +105,7 @@ export default async function SingleBlogPostPage({ params }: PageProps) {
             <div>
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-brand transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to Blog Articles</span>
@@ -136,7 +136,7 @@ export default async function SingleBlogPostPage({ params }: PageProps) {
                   <span>5 min read</span>
                 </span>
                 <span>•</span>
-                <span className="text-primary font-bold">By SK (A-Level Specialist)</span>
+                <span className="text-brand font-bold">By SK (A-Level Specialist)</span>
               </div>
             </div>
 
@@ -145,14 +145,14 @@ export default async function SingleBlogPostPage({ params }: PageProps) {
               <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-md">
                 <div className="bg-slate-900 px-4 py-2.5 text-white text-xs font-bold flex items-center justify-between">
                   <span className="flex items-center gap-1.5">
-                    <BookOpen className="w-4 h-4 text-primary" />
+                    <BookOpen className="w-4 h-4 text-brand" />
                     <span>Embedded Handwritten Notes & Diagram</span>
                   </span>
                   <a
                     href={post.image_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] text-primary hover:underline font-semibold"
+                    className="text-[11px] text-brand hover:underline font-semibold"
                   >
                     Open Full Image
                   </a>
@@ -180,7 +180,7 @@ export default async function SingleBlogPostPage({ params }: PageProps) {
               </div>
               <Link
                 href="/#courses"
-                className="bg-primary hover:bg-primary/95 text-white text-xs font-bold px-6 py-3.5 rounded-full shadow-lg transition-transform hover:scale-[1.02] inline-flex items-center gap-2"
+                className="bg-primary hover:bg-primary/95 text-primary-foreground text-xs font-bold px-6 py-3.5 rounded-full shadow-lg transition-transform hover:scale-[1.02] inline-flex items-center gap-2"
               >
                 <span>Enroll in Course</span>
                 <CheckCircle className="w-4 h-4" />

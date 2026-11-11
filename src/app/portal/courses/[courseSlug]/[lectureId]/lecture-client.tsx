@@ -84,7 +84,7 @@ export function LectureClient({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <Link
           href={`/portal/courses/${course.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-brand transition-colors uppercase"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Course Syllabus</span>
@@ -94,7 +94,7 @@ export function LectureClient({
         <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 uppercase">
           <span>{course.title}</span>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-primary truncate max-w-xs">{lecture.title}</span>
+          <span className="text-brand truncate max-w-xs">{lecture.title}</span>
         </div>
       </div>
 
@@ -148,7 +148,7 @@ export function LectureClient({
             nextUnlocked ? (
               <Link
                 href={`/portal/courses/${course.slug}/${nextLectureId}`}
-                className="inline-flex items-center justify-center gap-1.5 bg-primary hover:bg-primary/95 text-white text-xs font-bold px-5 py-3 rounded-xl shadow-md shadow-primary/10 transition-all hover:scale-[1.02]"
+                className="inline-flex items-center justify-center gap-1.5 bg-primary hover:bg-primary/95 text-primary-foreground text-xs font-bold px-5 py-3 rounded-xl shadow-md shadow-primary/10 transition-all hover:scale-[1.02]"
               >
                 <span>Next Lesson</span>
                 <ArrowRight className="w-4 h-4" />

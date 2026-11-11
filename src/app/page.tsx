@@ -76,30 +76,30 @@ export default async function HomePage() {
               speed={0.5}
               squareSize={40}
               direction="diagonal"
-              borderColor="#F97316"
-              hoverFillColor="#F97316"
+              borderColor="#56705F"
+              hoverFillColor="#CBF03D"
               shape="hexagon"
               hoverTrailAmount={8}
             />
           </div>
 
           {/* Blur Glows */}
-          <div className="absolute top-[-100px] right-[-100px] md:top-[-200px] md:right-[-200px] w-[350px] md:w-[600px] h-[350px] md:h-[600px] rounded-full bg-gradient-to-br from-primary/20 via-rose-500/10 to-transparent blur-[80px] md:blur-[120px] pointer-events-none z-0" />
+          <div className="absolute top-[-100px] right-[-100px] md:top-[-200px] md:right-[-200px] w-[350px] md:w-[600px] h-[350px] md:h-[600px] rounded-full bg-gradient-to-br from-primary/20 via-pencil/10 to-transparent blur-[80px] md:blur-[120px] pointer-events-none z-0" />
           <div className="absolute top-[40%] left-[-150px] w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px] pointer-events-none z-0" />
 
           <div className="max-w-6xl mx-auto flex flex-col items-center relative z-10">
             {/* The Badge */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/20 bg-white/70 backdrop-blur-xs text-slate-800 text-xs font-bold mb-8 shadow-xs dark:bg-slate-900/60 dark:text-white dark:border-slate-800 animate-pulse">
-              <span className="text-primary">✨</span>
+              <span className="text-brand">✨</span>
               <span>Best Online Platform for CIE A-Level Maths</span>
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             </div>            {/* Hero Title */}
-            <h1 className="text-4xl md:text-6xl lg:text-[4.25rem] font-black tracking-tight max-w-4xl leading-[1.15] text-[#0f172b]">
-              Stop memorizing formulas, let the math make sense on your <span className="underline decoration-primary decoration-wavy decoration-3 underline-offset-8">own</span> 📈
+            <h1 className="text-4xl md:text-6xl lg:text-[4.25rem] font-black tracking-tight max-w-4xl leading-[1.15] text-[#13241D]">
+              Stop memorizing formulas, let the math make sense on your <span className="underline decoration-brand decoration-wavy decoration-3 underline-offset-8">own</span> 📈
             </h1>
 
             {/* Subheader */}
-            <p className="mt-6 text-sm md:text-base text-[#0f172b] max-w-2xl leading-relaxed">
+            <p className="mt-6 text-sm md:text-base text-[#13241D] max-w-2xl leading-relaxed">
               We build your mathematical intuition from A to Z to guarantee your A* in CIE A-Level Maths. 
               Complete video curriculum, anti-skip progression, and live past paper practice.
             </p>
@@ -108,30 +108,30 @@ export default async function HomePage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Link
                 href="#courses"
-                className="bg-primary hover:bg-primary/95 text-white font-black text-xs tracking-wider uppercase px-8 py-4.5 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2"
+                className="bg-primary hover:bg-primary/95 text-primary-foreground font-black text-xs tracking-wider uppercase px-8 py-4.5 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2"
               >
                 <span>Explore Courses & Join Now</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="#vsl"
-                className="border border-[#0f172b] text-[#0f172b] font-black text-xs tracking-wider uppercase px-8 py-4.5 rounded-full transition-all hover:bg-[#0f172b] hover:text-white flex items-center justify-center gap-2"
+                className="border border-[#13241D] text-[#13241D] font-black text-xs tracking-wider uppercase px-8 py-4.5 rounded-full transition-all hover:bg-[#13241D] hover:text-white flex items-center justify-center gap-2"
               >
-                <Video className="w-4 h-4 text-primary" />
+                <Video className="w-4 h-4 text-brand" />
                 <span>Watch Sample Video</span>
               </Link>
             </div>
 
             {/* Trust Logo Banner */}
             <div className="mt-16 text-center space-y-4">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-[#0f172b]">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-[#13241D]">
                 Trusted by Students Across Top Institutions & Boards
               </p>
               <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-80">
-                <span className="font-extrabold text-sm text-[#0f172b] tracking-wider">CAMBRIDGE (CIE)</span>
-                <span className="font-bold text-sm text-[#0f172b] tracking-wider">EDEXCEL</span>
-                <span className="font-black text-sm text-[#0f172b] tracking-wider">AQA</span>
-                <span className="font-black text-sm text-[#0f172b] tracking-wider">IB MATHS</span>
+                <span className="font-extrabold text-sm text-[#13241D] tracking-wider">CAMBRIDGE (CIE)</span>
+                <span className="font-bold text-sm text-[#13241D] tracking-wider">EDEXCEL</span>
+                <span className="font-black text-sm text-[#13241D] tracking-wider">AQA</span>
+                <span className="font-black text-sm text-[#13241D] tracking-wider">IB MATHS</span>
               </div>
             </div>
           </div>
@@ -148,8 +148,8 @@ export default async function HomePage() {
           </div>
           
           <div className="mt-12 text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-[10px] font-extrabold tracking-widest text-primary uppercase">Video Sales Letter</span>
-            <h2 className="text-2xl font-black tracking-tight text-[#0f172b] sm:text-3xl">
+            <span className="text-[10px] font-extrabold tracking-widest text-brand uppercase">Video Sales Letter</span>
+            <h2 className="text-2xl font-black tracking-tight text-[#13241D] sm:text-3xl">
               Meet Your Instructor: SK
             </h2>
             <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -158,7 +158,7 @@ export default async function HomePage() {
             <div className="mt-8 flex justify-center">
               <Link
                 href="#courses"
-                className="bg-primary hover:bg-primary/95 text-white font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
+                className="bg-primary hover:bg-primary/95 text-primary-foreground font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Start Learning with SK</span>
                 <ArrowRight className="w-4 h-4" />
@@ -167,7 +167,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section id="about" className="w-full py-16 md:py-24 px-4 md:px-8 bg-[#0f172b] text-white border-y border-slate-800">
+        <section id="about" className="w-full py-16 md:py-24 px-4 md:px-8 bg-[#13241D] text-white border-y border-slate-800">
           <div className="max-w-6xl mx-auto w-full space-y-12 animate-fade-in">
             {/* Header */}
             <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -196,12 +196,12 @@ export default async function HomePage() {
                 {/* Bottom Left: Stat Capsule Card */}
                 <div className="bg-slate-950 text-white dark:bg-slate-900 p-6 rounded-[2rem] border border-slate-800/80 dark:border-slate-850 flex justify-around items-center min-h-[105px] shadow-sm">
                   <div className="text-center">
-                    <span className="block text-3xl font-black text-primary">10+ Years</span>
+                    <span className="block text-3xl font-black text-brand">10+ Years</span>
                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1 block">Teaching Experience</span>
                   </div>
                   <div className="w-px h-10 bg-slate-850" />
                   <div className="text-center">
-                    <span className="block text-3xl font-black text-primary">92%</span>
+                    <span className="block text-3xl font-black text-brand">92%</span>
                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1 block">A*/A Grade Rate</span>
                   </div>
                 </div>
@@ -227,7 +227,7 @@ export default async function HomePage() {
               </div>
 
               {/* Right Column (spans 3 columns) */}
-              <div className="lg:col-span-3 flex flex-col justify-between rounded-[2rem] border border-sky-500/35 bg-[#0f172b] p-6 shadow-sm min-h-[420px]">
+              <div className="lg:col-span-3 flex flex-col justify-between rounded-[2rem] border border-sky-500/35 bg-[#13241D] p-6 shadow-sm min-h-[420px]">
                 <div className="relative w-full h-[180px] rounded-2xl overflow-hidden mb-6 border border-slate-800/50">
                   <img
                     src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80"
@@ -249,7 +249,7 @@ export default async function HomePage() {
             <div className="mt-12 flex justify-center">
               <Link
                 href="#courses"
-                className="bg-primary hover:bg-primary/95 text-white font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
+                className="bg-primary hover:bg-primary/95 text-primary-foreground font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Enroll in the A* Syllabus</span>
                 <ArrowRight className="w-4 h-4" />
@@ -261,10 +261,10 @@ export default async function HomePage() {
         {/* COURSES LIST SECTION */}
         <Section id="courses" bg="alwaysWhite" className="flex flex-col items-center">
           <div className="text-center max-w-2xl mb-12">
-            <h2 className="text-3xl font-black tracking-tight text-[#0f172b] sm:text-4xl">
+            <h2 className="text-3xl font-black tracking-tight text-[#13241D] sm:text-4xl">
               Featured Mathematics Courses
             </h2>
-            <p className="mt-4 text-[#0f172b]/80">
+            <p className="mt-4 text-[#13241D]/80">
               Get comprehensive access to high-definition video lectures, notes, and revision papers. Select a course below to view details.
             </p>
           </div>
@@ -273,31 +273,31 @@ export default async function HomePage() {
             {courses.map((course: any) => (
               <div
                 key={course.id}
-                className="flex flex-col justify-between rounded-[2rem] bg-[#0f172b]/5 border border-[#0f172b]/10 hover:border-primary/20 p-6 shadow-xs hover:shadow-md transition-all duration-300 group"
+                className="flex flex-col justify-between rounded-[2rem] bg-[#13241D]/5 border border-[#13241D]/10 hover:border-primary/20 p-6 shadow-xs hover:shadow-md transition-all duration-300 group"
               >
                 <div>
                   <div className="h-44 rounded-2xl bg-gradient-to-br from-primary/10 to-indigo-500/10 border border-primary/5 flex items-center justify-center mb-6 relative overflow-hidden">
-                    <BookOpen className="w-12 h-12 text-primary stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
-                    <div className="absolute top-3 right-3 bg-[#0f172b] text-white text-[10px] font-bold px-2 py-1 rounded">
+                    <BookOpen className="w-12 h-12 text-brand stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
+                    <div className="absolute top-3 right-3 bg-[#13241D] text-white text-[10px] font-bold px-2 py-1 rounded">
                       CIE 9709
                     </div>
                   </div>
-                  <h3 className="text-xl font-black text-[#0f172b] group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-black text-[#13241D] group-hover:text-brand transition-colors">
                     {course.title}
                   </h3>
-                  <p className="mt-3 text-[#0f172b]/80 text-xs line-clamp-3">
+                  <p className="mt-3 text-[#13241D]/80 text-xs line-clamp-3">
                     {course.description}
                   </p>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-[#0f172b]/10 flex items-center justify-between">
+                <div className="mt-8 pt-6 border-t border-[#13241D]/10 flex items-center justify-between">
                   <div>
                     <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-wider">Course Fee</span>
-                    <span className="text-lg font-black text-[#0f172b]">Rs. {course.price_pkr.toLocaleString()}</span>
+                    <span className="text-lg font-black text-[#13241D]">Rs. {course.price_pkr.toLocaleString()}</span>
                   </div>
                   <Link
                     href={`/courses/${course.slug}`}
-                    className="inline-flex items-center gap-1.5 bg-primary/95 hover:bg-primary text-white text-xs font-bold px-5 py-2.5 rounded-full transition-all hover:scale-[1.01]"
+                    className="inline-flex items-center gap-1.5 bg-primary/95 hover:bg-primary text-primary-foreground text-xs font-bold px-5 py-2.5 rounded-full transition-all hover:scale-[1.01]"
                   >
                     <span>View Course</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -310,7 +310,7 @@ export default async function HomePage() {
           <div className="mt-12 flex justify-center w-full">
             <Link
               href="#courses"
-              className="bg-primary hover:bg-primary/95 text-white font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="bg-primary hover:bg-primary/95 text-primary-foreground font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Get Instant Access to Lectures</span>
               <ArrowRight className="w-4 h-4" />
@@ -359,7 +359,7 @@ export default async function HomePage() {
           <div className="mt-12 flex justify-center w-full">
             <Link
               href="#courses"
-              className="bg-primary hover:bg-primary/95 text-white font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="bg-primary hover:bg-primary/95 text-primary-foreground font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Unlock Your Path to A* Now</span>
               <ArrowRight className="w-4 h-4" />
@@ -370,10 +370,10 @@ export default async function HomePage() {
         {/* TESTIMONIALS SECTION */}
         <Section bg="alwaysWhite" className="flex flex-col items-center">
           <div className="text-center max-w-2xl mb-12">
-            <h2 className="text-3xl font-black tracking-tight text-[#0f172b] sm:text-4xl">
+            <h2 className="text-3xl font-black tracking-tight text-[#13241D] sm:text-4xl">
               Approved by Parents & Students
             </h2>
-            <p className="mt-4 text-[#0f172b]/80">
+            <p className="mt-4 text-[#13241D]/80">
               Read how SK's visual methods have transformed math results for Pakistani students.
             </p>
           </div>
@@ -383,7 +383,7 @@ export default async function HomePage() {
           <div className="mt-12 flex justify-center w-full">
             <Link
               href="#courses"
-              className="bg-primary hover:bg-primary/95 text-white font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="bg-primary hover:bg-primary/95 text-primary-foreground font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full transition-all hover:scale-[1.01] shadow-md shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Start Achieving Your A* Today</span>
               <ArrowRight className="w-4 h-4" />

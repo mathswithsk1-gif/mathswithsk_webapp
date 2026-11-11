@@ -55,7 +55,7 @@ export default async function BlogListingPage() {
         <Section bg="white" className="rounded-3xl border border-slate-200/40 dark:border-slate-800/60 p-6 md:p-12 shadow-sm space-y-10 max-w-6xl mx-auto">
           {/* HEADER HERO BANNER */}
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-brand text-xs font-black uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>A-Level Mathematics Library</span>
             </span>
@@ -84,14 +84,14 @@ export default async function BlogListingPage() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full flex items-center gap-1">
-                        <BookOpen className="w-3 h-3 text-primary" />
+                        <BookOpen className="w-3 h-3 text-brand" />
                         <span>Handwritten Notes Included</span>
                       </div>
                     </div>
                   )}
 
                   <div className="p-6 md:p-8 space-y-3">
-                    <h2 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+                    <h2 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand transition-colors leading-snug">
                       <Link href={`/blog/${post.slug}`}>
                         {post.title}
                       </Link>
@@ -109,7 +109,7 @@ export default async function BlogListingPage() {
                   </span>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-extrabold text-primary group-hover:translate-x-1 transition-transform"
+                    className="inline-flex items-center gap-1.5 text-xs font-extrabold text-brand group-hover:translate-x-1 transition-transform"
                   >
                     <span>Read Article</span>
                     <ArrowRight className="w-3.5 h-3.5" />
